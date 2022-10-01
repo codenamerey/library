@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" integrity="sha512-oHDEc8Xed4hiW6CxD7qjbnI+B07vDdX7hEPTvn9pSZO1bcRqHp8mj9pyr+8RVC2GmtEfI2Bi9Ke9Ass0as+zpg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="./js/script.js" defer></script>
+    <title>Library</title>
+</head>
+<body>
+    <table>
+        <tbody id="legends">
+            <tr>
+                <th>Book Name</th>
+                <th>Book Author</th>
+                <th>Book Pages</th>
+                <th>Has Already Read?</th>
+            </tr>
+        </tbody>
+        <tbody id="books">
+
+        </tbody>
+    </table>
+
+    <button id="form-trigger">New Button +</button>
+
+    <form id="add-book-form">
+        <fieldset class="info">
+            <label for="title">Book Title: </label>
+            <input id="title" type="text">
+            <label for="author">Book Author: </label>
+            <input id="author" type="text">
+            <label for="pages">Book Pages: </label>
+            <input id="pages" type="number" min="0">
+            
+            <label for="readStatus">Have you read it already?: </label>
+            <input id="readStatus" type="checkbox">
+        </fieldset>
+    </form>
+</body>
+</html>

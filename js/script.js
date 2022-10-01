@@ -1,4 +1,6 @@
 const booksDisplay = document.querySelector('#books');
+const formTrigger = document.querySelector('#form-trigger');
+const bookForm = document.querySelector('#add-book-form');
 
 let booksList = [
     {
@@ -34,3 +36,9 @@ function updateLibrary() {
         });
     });
 }
+
+updateLibrary();
+formTrigger.addEventListener('click', () => {
+    bookForm.classList.add('active');
+    document.body.classList.add('active');
+})
