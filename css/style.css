@@ -11,6 +11,9 @@ body {
 }
 
 body.active::after {
+    animation-name: fade-in;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
     content: "";
     position: fixed;
     inset: 0;
@@ -25,14 +28,24 @@ body.active::after {
     display: none;
     left: 50%;
     position: absolute;
+    opacity: 0;
     top: 50%;
     transform: translate(-50%, -50%);
+    transition: all 1s ease-in;
     width: clamp(25rem, 50%, 35rem);
     z-index: 1;
 }
 
 #add-book-form.active {
+    animation-name: fade-in;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
     display: block;
+}
+
+@keyframes fade-in {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 }
 
 .info {
