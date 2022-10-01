@@ -1,3 +1,5 @@
+const booksDisplay = document.querySelector('#books');
+
 let booksList = [
     {
         title: "Harry Potter",
@@ -17,4 +19,18 @@ function Book(title, author, pages, readStatus) {
 function addToLibrary(title, author, pages, readStatus) {
     let newBook = new Book(title, author, pages, readStatus);
     booksList.push(newBook);
+}
+
+function updateLibrary() {
+    booksDisplay.innerHTML = '';
+    booksList.forEach(book => {
+        const row = document.createElement('tr');
+        row.className = 'book';
+        booksDisplay.appendChild(row);
+        Object.values(book).forEach((value) => {
+            const cell = document.createElement('td');
+            cell.textContent = value;
+            row.appendChild(cell);
+        });
+    });
 }
