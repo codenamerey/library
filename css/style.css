@@ -70,9 +70,36 @@ th {
 
 table {
     padding: 1rem;
+    vertical-align: middle;
 }
 
 button {
     align-self: center;
     width: max-content;
+}
+
+.readStatus {
+    appearance: none;
+    width: 4ch;
+    height: 2ch;
+    padding: 1rem;
+    position: relative;
+    transform: translateY(25%);
+    background: darkblue;
+    border-radius: 1rem;
+}
+
+.readStatus::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    height: 2ch;
+    width: 2ch;
+    background: #fff;
+    border-radius: 100%;
+    transition: all 250ms ease;
+}
+
+.readStatus.checked::after {
+    left: 2ch;
 }
