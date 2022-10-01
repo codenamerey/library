@@ -1,6 +1,8 @@
 const booksDisplay = document.querySelector('#books');
 const formTrigger = document.querySelector('#form-trigger');
 const bookForm = document.querySelector('#add-book-form');
+const addBookButton = document.querySelector('#add-book');
+
 
 let booksList = [];
 
@@ -29,7 +31,7 @@ function updateLibrary() {
         row.className = 'book';
         booksDisplay.appendChild(row);
         Object.values(book).forEach((value) => {
-            if(value == true || value == false) {
+            if(value === true || value === false) {
                 const button_switch = document.createElement('input');
                 button_switch.type = 'checkbox';
                 button_switch.classList.add('readStatus');
@@ -72,8 +74,21 @@ function deleteFromLibrary(e) {
 addToLibrary('Harry Potter', 'J.K. Rowling', 200, true);
 addToLibrary('dawd','dawda', 'true', false);
 updateLibrary();
+
 formTrigger.addEventListener('click', () => {
     bookForm.classList.add('active');
     document.body.classList.add('active');
+});
+
+addBookButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    let title = bookForm.querySelector('input[id="title"]').value;
+    let author = bookForm.querySelector('input[id="author"]').value;
+    let pages = bookForm.querySelector('input[id="pages"]').value;
+    let readStatus = bookForm.querySelector('input[id="readStatus"]').checked;
+    addToLibrary(title, author, pages, readStatus);
+    bookForm.classList.remove('active');
+    document.body.classList.remove('active');
+    updateLibrary();
 });
 
