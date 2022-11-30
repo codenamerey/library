@@ -6,16 +6,29 @@ const addBookButton = document.querySelector('#add-book');
 
 let booksList = [];
 
-function Book(title, author, pages, readStatus) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.readStatus = readStatus;
+class Book {
+    constructor(title, author, pages, readStatus) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.readStatus = readStatus;
+    }
+
+    toggleReadStatus() {
+        this.readStatus = !this.readStatus;
+    }
 }
 
-Book.prototype.toggleReadStatus = function() {
-    this.readStatus = !this.readStatus;
-}
+// function Book(title, author, pages, readStatus) {
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.readStatus = readStatus;
+// }
+
+// Book.prototype.toggleReadStatus = function() {
+//     this.readStatus = !this.readStatus;
+// }
 
 function addToLibrary(title, author, pages, readStatus) {
     let newBook = new Book(title, author, pages, readStatus);
@@ -72,7 +85,7 @@ function deleteFromLibrary(e) {
 }
 
 addToLibrary('Harry Potter', 'J.K. Rowling', 200, true);
-addToLibrary('dawd','dawda', 'true', false);
+addToLibrary('dawd','dawda', 12, false);
 updateLibrary();
 
 formTrigger.addEventListener('click', () => {
