@@ -103,3 +103,15 @@ button {
 .readStatus.checked::after {
     left: 2ch;
 }
+
+#error-message {
+    background: red;
+    color: white;
+    display: none;
+    padding: .5rem;
+}
+
+#error-message > p {
+    font-weight: bold;
+    margin: 0;
+}

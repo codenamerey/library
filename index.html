@@ -27,19 +27,20 @@
 
     <button id="form-trigger">New Button +</button>
 
-    <form id="add-book-form">
+    <form id="add-book-form" novalidate>
         <fieldset class="info">
             <label for="title">Book Title: </label>
-            <input id="title" type="text">
+            <input id="title" type="text" required>
             <label for="author">Book Author: </label>
-            <input id="author" type="text">
+            <input id="author" type="text" required>
             <label for="pages">Book Pages: </label>
-            <input id="pages" type="number" min="0">
+            <input id="pages" type="number" min="0" required>
             
             <label for="readStatus">Have you read it already?: </label>
             <input id="readStatus" type="checkbox">
             <button type="button" id="add-book">Add New Book</button>
         </fieldset>
+        <aside id="error-message"><p>Error: </p><span id="message"></span></aside>
     </form>
 </body>
 </html>

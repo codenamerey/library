@@ -3,6 +3,13 @@ const formTrigger = document.querySelector('#form-trigger');
 const bookForm = document.querySelector('#add-book-form');
 const addBookButton = document.querySelector('#add-book');
 
+//book details
+let title = bookForm.querySelector('input[id="title"]');
+let author = bookForm.querySelector('input[id="author"]');
+let pages = bookForm.querySelector('input[id="pages"]');
+let book_info = [title, author, pages];
+let errorDiv = bookForm.querySelector('aside');
+let error_message = bookForm.querySelector('#error-message > #message');
 
 let booksList = [];
 
@@ -95,13 +102,30 @@ formTrigger.addEventListener('click', () => {
 
 addBookButton.addEventListener('click', (e) => {
     e.preventDefault();
-    let title = bookForm.querySelector('input[id="title"]').value;
-    let author = bookForm.querySelector('input[id="author"]').value;
-    let pages = bookForm.querySelector('input[id="pages"]').value;
+    //check if every info in book form is filled up
+    let currentInfo;
+    if(!(book_info.every((info) => {
+        currentInfo = info;
+        return info.validity.valid;
+    }))) {
+        errorDiv.style.display = 'block';
+        showError(currentInfo);
+        return;
+    } else {
+        errorDiv.style.display = 'none';
+    }
+
     let readStatus = bookForm.querySelector('input[id="readStatus"]').checked;
-    addToLibrary(title, author, pages, readStatus);
+    addToLibrary(title.value, author.value, pages.value, readStatus);
     bookForm.classList.remove('active');
     document.body.classList.remove('active');
     updateLibrary();
 });
+
+function showError(info) {
+    console.log(info);
+    if(info.validity.valueMissing) {
+        error_message.textContent = `${(info.id)} is missing. Please fill it out.`;
+    }
+}
 
